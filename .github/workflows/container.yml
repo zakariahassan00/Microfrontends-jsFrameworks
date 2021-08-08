@@ -6,7 +6,7 @@ on:
       - master
     paths:
       - 'container/**'
-default:
+defaults:
   run:
     working-directory: container
 
@@ -21,3 +21,6 @@ jobs:
 
       - uses: chrislennon/action-aws-cli@v1.1
       - run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
+        env:
+          AWS_ACCESS_KET_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRE_ACCESS_KEY }}
